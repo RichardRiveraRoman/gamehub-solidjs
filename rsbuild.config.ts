@@ -6,7 +6,7 @@ import { pluginSass } from '@rsbuild/plugin-sass';
 export default defineConfig({
   plugins: [
     pluginBabel({
-      include: /\.(?:jsx|tsx)$/,
+      include: /\.tsx$/,
     }),
     pluginSolid(),
     pluginSass({
@@ -19,4 +19,14 @@ export default defineConfig({
       },
     }),
   ],
+  tools: {
+    postcss: (opts, { addPlugins }) => {
+      console.log('PostCSS Options:', JSON.stringify(opts, null, 2));
+      addPlugins([
+        require('postcss-import'),
+        require('tailwindcss'),
+        require('autoprefixer'),
+      ]);
+    },
+  },
 });

@@ -1,12 +1,11 @@
-import './App.scss';
 import ThemeSwitcher from './components/ThemeSwitch';
 
-const App = () => {
+function App() {
   return (
     <div>
       <ThemeSwitcher />
     </div>
   );
-};
+}
 
 export default App;
