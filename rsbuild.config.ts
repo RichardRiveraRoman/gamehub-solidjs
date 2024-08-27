@@ -20,13 +20,14 @@ export default defineConfig({
     }),
   ],
   tools: {
-    postcss: (opts, { addPlugins }) => {
-      console.log('PostCSS Options:', JSON.stringify(opts, null, 2));
-      addPlugins([
-        require('postcss-import'),
-        require('tailwindcss'),
-        require('autoprefixer'),
-      ]);
+    postcss: {
+      postcssOptions: {
+        plugins: [
+          require('postcss-import'),
+          require('tailwindcss'),
+          require('autoprefixer'),
+        ],
+      },
     },
   },
 });
