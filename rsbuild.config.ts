@@ -4,10 +4,6 @@ import { pluginSolid } from '@rsbuild/plugin-solid';
 import { pluginSass } from '@rsbuild/plugin-sass';
 
 const { publicVars } = loadEnv({ prefixes: ['SOLID_'] });
-// console.log('Using public vars:', publicVars);
-if (process.env.NODE_ENV === 'development') {
-  console.log('this is a development log');
-}
 
 export default defineConfig({
   source: {

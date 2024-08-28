@@ -6,5 +6,3 @@ export default axios.create({
     key: import.meta.env.SOLID_RAWG_API_KEY,
   },
 });
-
-// console.log('API Key:', import.meta.env.SOLID_RAWG_API_KEY);
