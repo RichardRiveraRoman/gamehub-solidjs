@@ -1,4 +1,5 @@
 import { createEffect, createSignal } from 'solid-js';
+import { tw } from 'typewind';
 
 type Theme = 'light' | 'dark' | 'system';
 
@@ -11,6 +12,7 @@ function useTheme() {
   }
 
   createEffect(() => {
+    const controller = new AbortController();
     const root = window.document.documentElement;
     const isDark =
       theme() === 'dark' ||
@@ -30,6 +32,7 @@ function useTheme() {
     } else {
       localStorage.setItem('theme', theme());
     }
+    return () => controller.abort();
   }, [theme]);
 
   return [theme, setTheme] as const;
@@ -43,14 +46,42 @@ function ThemeSwitch() {
   }
 
   return (
-    <label class="inline-flex cursor-pointer items-center justify-center px-6 py-4 align-middle">
+    <label
+      class={
+        tw.inline_flex.cursor_pointer.items_center.justify_center.px_6.py_4
+          .align_middle
+      }
+    >
       <input
         type="checkbox"
-        class="peer sr-only"
+        class={tw.raw('peer').sr_only}
         checked={theme() === 'dark'}
         onChange={toggleTheme}
       />
-      <span class="peer absolute h-6 w-10 rounded-full bg-gray-200 shadow-inner before:absolute before:left-1 before:top-1 before:size-4 before:rounded-full before:border before:border-gray-300 before:bg-white before:shadow-md before:transition-transform before:duration-300 before:ease-in-out before:content-[''] peer-checked:bg-green-300 peer-checked:before:translate-x-4 peer-focus:outline-transparent peer-focus-visible:outline peer-focus-visible:outline-1 peer-focus-visible:outline-offset-1 peer-focus-visible:outline-green-300" />
+      <span
+        class={tw.absolute.h_6.w_10.rounded_full.bg_gray_200.shadow_inner
+          .before(tw.absolute)
+          .before(tw.left_1)
+          .before(tw.top_1)
+          .before(tw.size_4)
+          .before(tw.rounded_full)
+          .before(tw.border)
+          .before(tw.border_gray_300)
+          .before(tw.bg_white)
+          .before(tw.shadow_md)
+          .before(tw.transition_transform)
+          .before(tw.duration_300)
+          .before(tw.ease_in_out)
+          .before(tw.content_["''"])
+          .raw('peer')
+          .peer_checked(tw.bg_green_300)
+          .peer_checked(tw.before(tw.translate_x_4))
+          .peer_focus(tw.outline_transparent)
+          .peer_focus_visible(tw.outline)
+          .peer_focus_visible(tw.outline_1)
+          .peer_focus_visible(tw.outline_offset_1)
+          .peer_focus_visible(tw.outline_green_300)}
+      />
     </label>
   );
 }
