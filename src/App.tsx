@@ -1,5 +1,6 @@
 import './App.scss';
 import NavBar from './components/NavBar';
+import GameGrid from './components/GameGrid';
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       </aside>
       <main class="grid-main mx-auto">
         <div class="flex gap-2">
-          <h2 class="bg-orange-500">Main</h2>
+          <GameGrid />
         </div>
       </main>
     </div>
