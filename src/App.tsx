@@ -1,13 +1,10 @@
 import './App.scss';
-import ThemeSwitcher from './components/ThemeSwitch';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <div class="app-container bg-zinc-100 dark:bg-zinc-900">
-      <nav class="app-nav">
-        <h2 class="bg-purple-500">Nav</h2>
-        <ThemeSwitcher />
-      </nav>
+      <NavBar class="app-nav" />
       <aside class="app-aside">
         <h2 class="bg-blue-500">Aside</h2>
       </aside>
