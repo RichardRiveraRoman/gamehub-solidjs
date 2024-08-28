@@ -1,5 +1,5 @@
-import ThemeSwitcher from './components/ThemeSwitch';
 import './App.scss';
+import ThemeSwitcher from './components/ThemeSwitch';
 
 function App() {
   return (
