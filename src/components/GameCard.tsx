@@ -1,8 +1,10 @@
 import type { Game } from '../hooks/useGames';
+import PlatformIcons from './PlatformIcons';
 
 interface Props {
   game: Game;
 }
+
 function GameCard({ game }: Props) {
   return (
     <div class="max-w-64 max-h-96 rounded-lg shadow-lg overflow-hidden custom-bg outline outline-slate-400/50 outline-1 dark:outline-none transition-colors duration-200 flex flex-col">
@@ -18,11 +20,11 @@ function GameCard({ game }: Props) {
         </p>
         <div class="mt-auto">
           <div class="flex justify-between mb-2">
-            {/* {game.parent_platforms && (
+            {game.parent_platforms && (
               <PlatformIcons
-                platforms={game.parent_platforms.map((e) => e.platform)}
+                platforms={game.parent_platforms.map((p) => p.platform)}
               />
-            )} */}
+            )}
             {/* {game.metacritic && <GameScore score={game.metacritic} />} */}
           </div>
           {/* <GameRating rating={game.rating_top} /> */}
