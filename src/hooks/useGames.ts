@@ -2,9 +2,10 @@ import { createEffect, createSignal } from 'solid-js';
 import apiClient from '../services/apiClient';
 import { CanceledError } from 'axios';
 
-type Game = {
+export type Game = {
   id: number;
   name: string;
+  background_image: string;
 };
 
 type FetchGamesResponse = {
