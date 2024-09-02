@@ -1,32 +1,40 @@
+import { For, type Component } from 'solid-js';
 import type { Platform } from '../hooks/useGames';
-import { For, createResource } from 'solid-js';
+import androidIcon from '../assets/Platforms/android.png';
+import iosIcon from '../assets/Platforms/ios.png';
+import linuxIcon from '../assets/Platforms/linux.png';
+import macIcon from '../assets/Platforms/mac.png';
+import nintendoIcon from '../assets/Platforms/nintendo.png';
+import pcIcon from '../assets/Platforms/pc.png';
+import playstationIcon from '../assets/Platforms/playstation.png';
+import webIcon from '../assets/Platforms/web.png';
+import xboxIcon from '../assets/Platforms/xbox.png';
 
-const PlatformIcons = ({ platforms }: { platforms: Platform[] }) => {
-  const loadImage = async (slug: string) => {
-    try {
-      return (await import(`../assets/Platforms/${slug}.png`)).default;
-    } catch (error) {
-      return (await import('../assets/Platforms/danger.png')).default;
-    }
-  };
-
-  return (
-    <span class="flex gap-2 px-2 items-center max-w-sm h-8 rounded custom-bg outline outline-slate-300/50 outline-1 dark:outline-none">
-      <For each={platforms}>
-        {(platform) => {
-          const [src] = createResource(() => loadImage(platform.slug));
-          return (
-            <img
-              src={src()}
-              alt={`${platform.name} icon`}
-              title={platform.name}
-              class="w-4 h-4 object-contain platform-icon"
-            />
-          );
-        }}
-      </For>
-    </span>
-  );
+const platformIcons: Record<string, string> = {
+  android: androidIcon,
+  ios: iosIcon,
+  linux: linuxIcon,
+  mac: macIcon,
+  nintendo: nintendoIcon,
+  pc: pcIcon,
+  playstation: playstationIcon,
+  web: webIcon,
+  xbox: xboxIcon,
 };
+
+const PlatformIcons: Component<{ platforms: Platform[] }> = (props) => (
+  <span class="flex h-8 max-w-sm items-center gap-2 rounded px-2 outline outline-1 outline-slate-300/50 dark:outline-none custom-bg">
+    <For each={props.platforms}>
+      {(platform) => (
+        <img
+          src={platformIcons[platform.slug] || ''}
+          alt={`${platform.name} icon`}
+          title={platform.name}
+          class="h-4 w-4 object-contain platform-icon"
+        />
+      )}
+    </For>
+  </span>
+);
 
 export default PlatformIcons;
