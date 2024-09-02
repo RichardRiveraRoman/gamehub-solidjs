@@ -1,4 +1,5 @@
 import type { Game } from '../hooks/useGames';
+import GameScore from './GameScore';
 import PlatformIcons from './PlatformIcons';
 
 interface Props {
@@ -25,7 +26,7 @@ function GameCard({ game }: Props) {
                 platforms={game.parent_platforms.map((p) => p.platform)}
               />
             )}
-            {/* {game.metacritic && <GameScore score={game.metacritic} />} */}
+            {game.metacritic && <GameScore score={game.metacritic} />}
           </div>
           {/* <GameRating rating={game.rating_top} /> */}
         </div>
