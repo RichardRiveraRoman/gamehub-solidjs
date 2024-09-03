@@ -30,7 +30,7 @@ const PlatformIcons: Component<{ platforms: Platform[] }> = (props) => (
           src={platformIcons[platform.slug] || ''}
           alt={`${platform.name} icon`}
           title={platform.name}
-          class="h-4 w-4 object-contain platform-icon"
+          class="h-3 w-3 object-contain platform-icon"
         />
       )}
     </For>
