@@ -20,7 +20,7 @@ const GameRating = ({ rating }: { rating: number }) => {
 
   return (
     <span
-      class={`inline-block rounded-full px-3 py-1 text-sm font-semibold text-white ${
+      class={`inline-block rounded px-3 py-1 text-sm font-semibold text-white ${
         colors[ratingString] || 'bg-gray-500 dark:bg-gray-600'
       }`}
     >
