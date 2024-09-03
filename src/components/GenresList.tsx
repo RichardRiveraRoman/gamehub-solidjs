@@ -2,10 +2,10 @@ import { For } from 'solid-js';
 import useGenres from '../hooks/useGenres';
 
 function GenresList() {
-  const { genres } = useGenres();
+  const { data } = useGenres();
   return (
     <ul>
-      <For each={genres()}>{(genre) => <li>{genre.name}</li>}</For>
+      <For each={data()}>{(data) => <li>{data.name}</li>}</For>
     </ul>
   );
 }
