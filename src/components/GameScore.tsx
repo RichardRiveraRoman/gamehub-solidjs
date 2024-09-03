@@ -7,7 +7,7 @@ const GameScore = ({ score }: { score: number }) => {
 
   return (
     <span
-      class={`custom-bg w-8 h-6 my-auto text-center rounded-sm text-sm border-[1px] ${getScoreColor(score)}`}
+      class={`custom-bg my-auto h-6 w-8 rounded-sm border-[1px] text-center text-sm ${getScoreColor(score)}`}
     >
       {score}
     </span>

@@ -33,7 +33,7 @@ body {
     "main";
 
   @include respond-to(sm) {
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 170px 1fr;
     grid-template-areas:
       "nav nav"
       "aside main";
@@ -52,7 +52,7 @@ body {
   }
 
   @include respond-to(2xl) {
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 230px 1fr;
   }
 }
 

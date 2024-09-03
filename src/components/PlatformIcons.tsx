@@ -23,14 +23,14 @@ const platformIcons: Record<string, string> = {
 };
 
 const PlatformIcons: Component<{ platforms: Platform[] }> = (props) => (
-  <span class="flex h-8 max-w-sm items-center gap-2 rounded px-2 outline outline-1 outline-slate-300/50 dark:outline-none custom-bg">
+  <span class="custom-bg flex h-8 max-w-sm items-center gap-2 rounded px-2 outline outline-1 outline-slate-300/50 dark:outline-none">
     <For each={props.platforms}>
       {(platform) => (
         <img
           src={platformIcons[platform.slug] || ''}
           alt={`${platform.name} icon`}
           title={platform.name}
-          class="h-3 w-3 object-contain platform-icon"
+          class="platform-icon h-4 w-4 object-contain"
         />
       )}
     </For>

@@ -10,18 +10,18 @@ interface Props {
 
 function GameCard({ game }: Props) {
   return (
-    <div class="max-w-64 max-h-96 rounded-lg shadow-lg overflow-hidden custom-bg outline outline-slate-400/50 outline-1 dark:outline-none transition-colors duration-200 flex flex-col">
+    <div class="custom-bg flex max-h-96 min-w-52 max-w-72 flex-col overflow-hidden rounded-lg shadow-lg outline outline-1 outline-slate-400/50 transition-colors duration-200 dark:outline-none">
       <img
-        class="w-64 h-48 object-cover"
+        class="h-52 w-72 object-cover"
         src={getCroppedImageUrl(game.background_image)}
         alt={game.name}
       />
-      <div class="px-6 py-4 flex flex-col flex-grow">
-        <p class="text-center mt-auto font-bold text-xl mb-3 text-gray-800 dark:text-white">
+      <div class="flex flex-grow flex-col px-5 py-6">
+        <p class="mb-3 mt-auto text-center text-xl font-bold text-gray-800 dark:text-white">
           {game.name}
         </p>
         <div class="mt-auto">
-          <div class="flex justify-between mb-2">
+          <div class="mb-2 flex justify-between">
             {game.parent_platforms && (
               <PlatformIcons
                 platforms={game.parent_platforms.map((p) => p.platform)}

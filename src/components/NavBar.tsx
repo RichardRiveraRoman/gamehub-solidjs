@@ -5,7 +5,7 @@ import ThemeSwitch from './ThemeSwitch';
 function NavBar(classAttr: JSX.HTMLAttributes<HTMLElement>) {
   return (
     <nav
-      class={`w-full flex gap-6 items-center text-black dark:text-white px-2 ${classAttr.class}`}
+      class={`flex w-full items-center gap-6 px-2 text-black dark:text-white ${classAttr.class}`}
     >
       <img
         src={logo}

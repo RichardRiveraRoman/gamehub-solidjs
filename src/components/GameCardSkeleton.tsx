@@ -2,21 +2,21 @@ import { For } from 'solid-js';
 
 const GameCardSkeleton = () => {
   return (
-    <div class="max-w-64 max-h-96 rounded-lg shadow-lg overflow-hidden custom-bg transition-colors duration-200">
-      <div class="w-64 h-48 custom-bg animate-pulse" />
-      <div class="px-6 py-4">
-        <div class="h-7 mx-auto custom-bg rounded w-3/4 mb-3 animate-pulse" />
-        <div class="flex justify-between mb-2">
-          <div class="custom-bg flex gap-1 p-1 rounded">
+    <div class="custom-bg max-h-96 min-w-52 max-w-72 overflow-hidden rounded-lg shadow-lg transition-colors duration-200">
+      <div class="custom-bg h-52 w-72 animate-pulse" />
+      <div class="px-6 py-5">
+        <div class="custom-bg mx-auto mb-3 h-7 w-3/4 animate-pulse rounded" />
+        <div class="mb-4 flex justify-between">
+          <div class="custom-bg flex gap-1 rounded p-1">
             <For each={[1, 2, 3]}>
               {() => (
-                <div class="size-6 custom-bg border-[1px] border-zinc-500/20 rounded animate-pulse" />
+                <div class="custom-bg size-6 animate-pulse rounded border-[1px] border-zinc-500/20" />
               )}
             </For>
           </div>
-          <div class="custom-bg border-[1px] border-zinc-500/20 w-8 h-6 rounded animate-pulse" />
+          <div class="custom-bg h-6 w-8 animate-pulse rounded border-[1px] border-zinc-500/20" />
         </div>
-        <div class="h-7 custom-bg rounded w-1/3 animate-pulse" />
+        <div class="custom-bg h-7 w-1/3 animate-pulse rounded" />
       </div>
     </div>
   );
