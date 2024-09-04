@@ -1,4 +1,4 @@
-import { For } from 'solid-js';
+import { For, Show } from 'solid-js';
 import useGenres, { type Genre } from '../hooks/useGenres';
 import getCroppedImageUrl from '../services/image-url';
 import Spinner from './Spinner';
@@ -8,10 +8,12 @@ function GenreList() {
 
   if (error()) return null;
 
-  if (isLoading()) return <Spinner />;
-
   return (
     <ul>
+      <Show when={isLoading()}>
+        <Spinner />
+      </Show>
+
       <For each={data()}>
         {(genre) => (
           <li>
