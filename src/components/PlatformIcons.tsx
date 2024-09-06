@@ -9,6 +9,8 @@ import pcIcon from '../assets/Platforms/pc.png';
 import playstationIcon from '../assets/Platforms/playstation.png';
 import webIcon from '../assets/Platforms/web.png';
 import xboxIcon from '../assets/Platforms/xbox.png';
+import segaIcon from '../assets/Platforms/sega.png';
+import dangerIcon from '../assets/Platforms/danger.png';
 
 const platformIcons: Record<string, string> = {
   android: androidIcon,
@@ -20,6 +22,7 @@ const platformIcons: Record<string, string> = {
   playstation: playstationIcon,
   web: webIcon,
   xbox: xboxIcon,
+  sega: segaIcon,
 };
 
 const PlatformIcons: Component<{ platforms: Platform[] }> = (props) => (
@@ -27,7 +30,7 @@ const PlatformIcons: Component<{ platforms: Platform[] }> = (props) => (
     <For each={props.platforms}>
       {(platform) => (
         <img
-          src={platformIcons[platform.slug] || ''}
+          src={platformIcons[platform.slug] || dangerIcon}
           alt={`${platform.name} icon`}
           title={platform.name}
           class="platform-icon h-4 w-4 object-contain"
