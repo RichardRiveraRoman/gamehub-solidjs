@@ -2,9 +2,10 @@ import { For, Show } from 'solid-js';
 import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
+import type { Genre } from '../hooks/useGenres';
 
-function GameGrid() {
-  const { data, error, isLoading } = useGames();
+function GameGrid({ selectedGenre }: { selectedGenre: () => Genre | null }) {
+  const { data: games, error, isLoading } = useGames(selectedGenre);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
   return (
@@ -17,7 +18,9 @@ function GameGrid() {
         <p class="text-red-500">{error()}</p>
       </Show>
 
-      <For each={data()}>{(game) => <GameCard game={game} />}</For>
+      <Show when={!isLoading() && !error()}>
+        <For each={games()}>{(game) => <GameCard game={game} />}</For>
+      </Show>
     </div>
   );
 }

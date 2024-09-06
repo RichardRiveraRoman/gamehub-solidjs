@@ -3,7 +3,7 @@ import useGenres, { type Genre } from '../hooks/useGenres';
 import getCroppedImageUrl from '../services/image-url';
 import Spinner from './Spinner';
 
-function GenreList() {
+function GenreList({ onSelectGenre }: { onSelectGenre: (genre: Genre) => void }) {
   const { data, error, isLoading } = useGenres();
 
   if (error()) return null;
@@ -23,7 +23,13 @@ function GenreList() {
                 src={getCroppedImageUrl(genre.image_background)}
                 alt={genre.name}
               />
-              <p>{genre.name}</p>
+              <button
+                type="button"
+                class="text-left hover:font-bold hover:underline"
+                onClick={() => onSelectGenre(genre)}
+              >
+                {genre.name}
+              </button>
             </div>
           </li>
         )}

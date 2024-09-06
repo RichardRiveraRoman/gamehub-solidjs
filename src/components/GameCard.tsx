@@ -4,11 +4,7 @@ import GameRating from './GameRating';
 import GameScore from './GameScore';
 import PlatformIcons from './PlatformIcons';
 
-interface Props {
-  game: Game;
-}
-
-function GameCard({ game }: Props) {
+function GameCard({ game }: { game: Game }) {
   return (
     <div class="custom-bg flex max-h-96 min-w-52 max-w-72 flex-col overflow-hidden rounded-lg shadow-lg outline outline-1 outline-slate-400/50 transition-colors duration-200 dark:outline-none">
       <img
