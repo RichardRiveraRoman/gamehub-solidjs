@@ -3,7 +3,12 @@ import useGenres, { type Genre } from '../hooks/useGenres';
 import getCroppedImageUrl from '../services/image-url';
 import Spinner from './Spinner';
 
-function GenreList({ onSelectGenre }: { onSelectGenre: (genre: Genre) => void }) {
+interface Props {
+  selectedGenre: () => Genre | null;
+  onSelectGenre: (genre: Genre) => void;
+}
+
+function GenreList(props: Props) {
   const { data, error, isLoading } = useGenres();
 
   if (error()) return null;
@@ -25,8 +30,8 @@ function GenreList({ onSelectGenre }: { onSelectGenre: (genre: Genre) => void })
               />
               <button
                 type="button"
-                class="text-left hover:font-bold hover:underline"
-                onClick={() => onSelectGenre(genre)}
+                class={`text-left hover:font-bold hover:underline ${genre.id === props.selectedGenre()?.id ? "font-bold" : "font-normal"} `}
+                onClick={() => props.onSelectGenre(genre)}
               >
                 {genre.name}
               </button>

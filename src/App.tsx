@@ -12,7 +12,7 @@ function App() {
     <div class="app-container bg-zinc-100 dark:bg-zinc-900">
       <NavBar class="app-nav" />
       <aside class="app-aside">
-        <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+        <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} selectedGenre={selectedGenre} />
       </aside>
       <main class="grid-main mx-auto">
         <div class="flex gap-2">
