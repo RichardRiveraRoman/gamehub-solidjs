@@ -1,5 +1,5 @@
 import useData from './useData';
-import type { Genre } from './useGenres';
+import type { GameQuery } from "../App";
 
 export type Platform = {
   id: number;
@@ -16,11 +16,20 @@ export type Game = {
   rating_top: number;
 };
 
-function useGames(selectedGenre: () => Genre | null) {
+
+// function useGames(selectedGenre: () => Genre | null, selectedPlatform: () => Platform | null) {
+function useGames(gameQuery: () => GameQuery) {
   return useData<Game>(
     '/games',
-    () => ({ params: { genres: selectedGenre()?.id } }),
-    [selectedGenre()?.id],
+    () => ({
+      params: {
+        genres: gameQuery().genre?.id,
+        platforms: gameQuery().platform?.id,
+        ordering: gameQuery().sortOrder,
+        search: gameQuery().searchText,
+      }
+    }),
+    [gameQuery()],
   );
 }
 

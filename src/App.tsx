@@ -1,23 +1,49 @@
 import './App.scss';
 import NavBar from './components/NavBar';
-import GameGrid from './components/GameGrid';
 import GenreList from './components/GenreList';
 import type { Genre } from './hooks/useGenres';
 import { createSignal } from 'solid-js';
+import PlatformSelector from './components/PlatformSelector';
+import { Platform } from './hooks/useGames';
+import SortSelector from './components/SortSelector';
+import GameGrid from './components/GameGrid';
+import { tw } from 'typewind';
+
+export type GameQuery = {
+  genre: Genre | null;
+  platform: Platform | null;
+  searchText: string;
+  sortOrder: string;
+};
 
 function App() {
-  const [selectedGenre, setSelectedGenre] = createSignal<Genre | null>(null);
+  const [gameQuery, setGameQuery] = createSignal<GameQuery>({} as GameQuery);
 
   return (
-    <div class="app-container bg-zinc-100 dark:bg-zinc-900">
-      <NavBar class="app-nav" />
+    <div class={tw.raw('app-container').bg_zinc_100.dark(tw.bg_zinc_900)}>
+      <NavBar class="app-nav" onSearch={(searchText: string) => setGameQuery({ ...gameQuery(), searchText })} />
       <aside class="app-aside">
-        <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} selectedGenre={selectedGenre} />
+        <GenreList
+          selectedGenre={gameQuery().genre}
+          onSelectGenre={(genre) => setGameQuery({ ...gameQuery(), genre })}
+        />
       </aside>
-      <main class="grid-main mx-auto">
-        <div class="flex gap-2">
-          <GameGrid selectedGenre={selectedGenre} />
+      <main class={tw.raw('grid-main').mx_auto}>
+        <div class={tw.flex.gap_2}>
+          <PlatformSelector
+            selectedPlatform={gameQuery().platform}
+            onSelectPlatform={(platform) =>
+              setGameQuery({ ...gameQuery(), platform })
+            }
+          />
+          <SortSelector
+            sortOrder={gameQuery().sortOrder}
+            onSelectSortOrder={(sortOrder) =>
+              setGameQuery({ ...gameQuery(), sortOrder })
+            }
+          />
         </div>
+        <GameGrid gameQuery={gameQuery} />
       </main>
     </div>
   );

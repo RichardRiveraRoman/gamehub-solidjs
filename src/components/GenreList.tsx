@@ -2,13 +2,14 @@ import { For, Show } from 'solid-js';
 import useGenres, { type Genre } from '../hooks/useGenres';
 import getCroppedImageUrl from '../services/image-url';
 import Spinner from './Spinner';
+import { tw } from 'typewind';
 
 interface Props {
-  selectedGenre: () => Genre | null;
+  selectedGenre: Genre | null;
   onSelectGenre: (genre: Genre) => void;
 }
 
-function GenreList(props: Props) {
+function GenreList({ selectedGenre, onSelectGenre }: Props) {
   const { data, error, isLoading } = useGenres();
 
   if (error()) return null;
@@ -22,16 +23,16 @@ function GenreList(props: Props) {
       <For each={data()}>
         {(genre) => (
           <li>
-            <div class="m-2 flex items-center gap-2 px-2 py-1 text-black dark:text-white">
+            <div class={tw.m_2.flex.items_center.gap_2.px_2.py_2.text_black.dark(tw.text_white)}>
               <img
-                class="size-9 rounded-xl object-cover"
+                class={tw.size_9.rounded_xl.object_cover}
                 src={getCroppedImageUrl(genre.image_background)}
                 alt={genre.name}
               />
               <button
                 type="button"
-                class={`text-left hover:font-bold hover:underline ${genre.id === props.selectedGenre()?.id ? "font-bold" : "font-normal"} `}
-                onClick={() => props.onSelectGenre(genre)}
+                class={`${tw.text_left.hover(tw.font_bold.underline)} ${genre.id === selectedGenre?.id ? "font-bold" : "font-normal"} `}
+                onClick={() => onSelectGenre(genre)}
               >
                 {genre.name}
               </button>

@@ -8,7 +8,9 @@ function useTheme() {
 
   function getInitialTheme(): Theme {
     if (typeof window === 'undefined') return 'system';
-    return (localStorage.getItem('theme') as Theme) || 'system';
+    const savedTheme = localStorage.getItem('theme') as Theme;
+    if (savedTheme) return savedTheme;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
   createEffect(() => {
@@ -59,28 +61,13 @@ function ThemeSwitch() {
         onChange={toggleTheme}
       />
       <span
-        class={tw.absolute.h_6.w_10.rounded_full.bg_gray_200.shadow_inner
-          .before(tw.absolute)
-          .before(tw.left_1)
-          .before(tw.top_1)
-          .before(tw.size_4)
-          .before(tw.rounded_full)
-          .before(tw.border)
-          .before(tw.border_gray_300)
-          .before(tw.bg_white)
-          .before(tw.shadow_md)
-          .before(tw.transition_transform)
-          .before(tw.duration_300)
-          .before(tw.ease_in_out)
-          .before(tw.content_["''"])
-          .raw('peer')
-          .peer_checked(tw.bg_green_300)
-          .peer_checked(tw.before(tw.translate_x_4))
-          .peer_focus(tw.outline_transparent)
-          .peer_focus_visible(tw.outline)
-          .peer_focus_visible(tw.outline_1)
-          .peer_focus_visible(tw.outline_offset_1)
-          .peer_focus_visible(tw.outline_green_300)}
+        class={
+          tw.absolute.h_6.w_10.rounded_full.bg_gray_200.shadow_inner
+            .before(tw.absolute.left_1.top_1.size_4.rounded_full.border.border_gray_300.bg_white.shadow_md.transition_transform.duration_300.ease_in_out.content_["''"])
+            .raw('peer')
+            .peer_checked(tw.bg_green_300.before(tw.translate_x_4))
+            .peer_focus(tw.outline_transparent.outline.outline_1.outline_offset_1.outline_green_300)
+        }
       />
     </label>
   );

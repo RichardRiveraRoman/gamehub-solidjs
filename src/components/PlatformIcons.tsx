@@ -11,6 +11,7 @@ import webIcon from '../assets/Platforms/web.png';
 import xboxIcon from '../assets/Platforms/xbox.png';
 import segaIcon from '../assets/Platforms/sega.png';
 import dangerIcon from '../assets/Platforms/danger.png';
+import { tw } from 'typewind';
 
 const platformIcons: Record<string, string> = {
   android: androidIcon,
@@ -26,14 +27,14 @@ const platformIcons: Record<string, string> = {
 };
 
 const PlatformIcons: Component<{ platforms: Platform[] }> = (props) => (
-  <span class="custom-bg flex h-8 max-w-sm items-center gap-2 rounded px-2 outline outline-1 outline-slate-300/50 dark:outline-none">
+  <span class={tw.raw('custom-bg').flex.h_8.max_w_sm.items_center.gap_2.rounded.px_2.outline.outline_1.outline_slate_300$["50"].dark(tw.outline_none)}>
     <For each={props.platforms}>
       {(platform) => (
         <img
           src={platformIcons[platform.slug] || dangerIcon}
           alt={`${platform.name} icon`}
           title={platform.name}
-          class="platform-icon h-4 w-4 object-contain"
+          class={tw.raw('platform-icon').h_4.w_4.object_contain}
         />
       )}
     </For>

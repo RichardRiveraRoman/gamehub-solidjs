@@ -1,23 +1,25 @@
+import { tw } from 'typewind';
 import type { Game } from '../hooks/useGames';
-import getCroppedImageUrl from '../services/image-url';
+// import getCroppedImageUrl from '../services/image-url';
 import GameRating from './GameRating';
 import GameScore from './GameScore';
 import PlatformIcons from './PlatformIcons';
 
 function GameCard({ game }: { game: Game }) {
   return (
-    <div class="custom-bg flex max-h-96 min-w-52 max-w-72 flex-col overflow-hidden rounded-lg shadow-lg outline outline-1 outline-slate-400/50 transition-colors duration-200 dark:outline-none">
+    <div class={tw.raw('custom-bg').flex.max_h_96.min_w_52.max_w_72.flex_col.overflow_hidden.rounded_lg.shadow_lg.outline.outline_1.outline_slate_400$['50'].transition_colors.duration_200.dark(tw.outline_none)}>
       <img
-        class="h-52 w-72 object-cover"
-        src={getCroppedImageUrl(game.background_image)}
+        class={tw.h_52.w_72.object_cover}
+        // src={getCroppedImageUrl(game.background_image)}
+        src={game.background_image}
         alt={game.name}
       />
-      <div class="flex flex-grow flex-col px-5 py-6">
-        <p class="mb-3 mt-auto text-center text-xl font-bold text-gray-800 dark:text-white">
+      <div class={tw.flex.flex_grow.flex_col.px_5.py_6} >
+        <p class={tw.mb_3.mt_auto.text_center.text_xl.font_bold.text_gray_800.dark(tw.text_white)}>
           {game.name}
         </p>
-        <div class="mt-auto">
-          <div class="mb-2 flex justify-between">
+        <div class={tw.mt_auto}>
+          <div class={tw.mb_2.flex.justify_between}>
             {game.parent_platforms && (
               <PlatformIcons
                 platforms={game.parent_platforms.map((p) => p.platform)}
