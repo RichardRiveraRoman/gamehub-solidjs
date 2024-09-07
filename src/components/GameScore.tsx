@@ -9,6 +9,7 @@ const GameScore = ({ score }: { score: number }) => {
     <span
       class={`custom-bg my-auto h-6 w-8 rounded-sm border-[1px] text-center text-sm ${getScoreColor(score)}`}
     >
+      {' '}
       {score}
     </span>
   );

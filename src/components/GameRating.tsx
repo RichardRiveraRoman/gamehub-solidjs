@@ -1,4 +1,4 @@
-import { tw } from "typewind";
+import { tw } from 'typewind';
 
 const GameRating = ({ rating }: { rating: number }) => {
   const mapRating = (rating: number): string => {
@@ -22,7 +22,9 @@ const GameRating = ({ rating }: { rating: number }) => {
 
   return (
     // <span class={`${tw.inline_block.rounded.px_3.py_1.text_sm.font_semibold.text_white} ${colors[ratingString] || 'bg-gray-500 dark:bg-gray-600'}`}>
-    <span class={`${tw.inline_block.rounded.px_3.py_1.text_sm.font_semibold.text_white} ${colors[ratingString]} || ${tw.bg_gray_500.dark(tw.bg_gray_600)}}`}>
+    <span
+      class={`${tw.inline_block.rounded.px_3.py_1.text_sm.font_semibold.text_white} ${colors[ratingString]} || ${tw.bg_gray_500.dark(tw.bg_gray_600)}}`}
+    >
       {ratingString}
     </span>
   );

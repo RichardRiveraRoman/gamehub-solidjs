@@ -24,7 +24,7 @@ function useData<T>(
       apiClient
         .get<FetchResponse<T>>(endpoint, {
           signal: controller.signal,
-          ...(requestConfig?.()),
+          ...requestConfig?.(),
         })
         .then((res) => setData(res.data.results))
         .catch((err) => {

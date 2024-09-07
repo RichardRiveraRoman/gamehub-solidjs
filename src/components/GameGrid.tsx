@@ -2,7 +2,7 @@ import { For, Show } from 'solid-js';
 import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
-import { GameQuery } from '../App';
+import type { GameQuery } from '../App';
 import { tw } from 'typewind';
 
 function GameGrid({ gameQuery }: { gameQuery: () => GameQuery }) {

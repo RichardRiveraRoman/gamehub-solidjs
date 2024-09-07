@@ -27,7 +27,13 @@ const platformIcons: Record<string, string> = {
 };
 
 const PlatformIcons: Component<{ platforms: Platform[] }> = (props) => (
-  <span class={tw.raw('custom-bg').flex.h_8.max_w_sm.items_center.gap_2.rounded.px_2.outline.outline_1.outline_slate_300$["50"].dark(tw.outline_none)}>
+  <span
+    class={tw
+      .raw('custom-bg')
+      .flex.h_8.max_w_sm.items_center.gap_2.rounded.px_2.outline.outline_1.outline_slate_300$[
+        '50'
+      ].dark(tw.outline_none)}
+  >
     <For each={props.platforms}>
       {(platform) => (
         <img

@@ -23,7 +23,11 @@ function GenreList({ selectedGenre, onSelectGenre }: Props) {
       <For each={data()}>
         {(genre) => (
           <li>
-            <div class={tw.m_2.flex.items_center.gap_2.px_2.py_2.text_black.dark(tw.text_white)}>
+            <div
+              class={tw.m_2.flex.items_center.gap_2.px_2.py_2.text_black.dark(
+                tw.text_white,
+              )}
+            >
               <img
                 class={tw.size_9.rounded_xl.object_cover}
                 src={getCroppedImageUrl(genre.image_background)}
@@ -31,7 +35,7 @@ function GenreList({ selectedGenre, onSelectGenre }: Props) {
               />
               <button
                 type="button"
-                class={`${tw.text_left.hover(tw.font_bold.underline)} ${genre.id === selectedGenre?.id ? "font-bold" : "font-normal"} `}
+                class={`${tw.text_left.hover(tw.font_bold.underline)} ${genre.id === selectedGenre?.id ? 'font-bold' : 'font-normal'} `}
                 onClick={() => onSelectGenre(genre)}
               >
                 {genre.name}

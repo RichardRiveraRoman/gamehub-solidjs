@@ -10,7 +10,9 @@ function useTheme() {
     if (typeof window === 'undefined') return 'system';
     const savedTheme = localStorage.getItem('theme') as Theme;
     if (savedTheme) return savedTheme;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
   }
 
   createEffect(() => {
@@ -61,13 +63,18 @@ function ThemeSwitch() {
         onChange={toggleTheme}
       />
       <span
-        class={
-          tw.absolute.h_6.w_10.rounded_full.bg_gray_200.shadow_inner
-            .before(tw.absolute.left_1.top_1.size_4.rounded_full.border.border_gray_300.bg_white.shadow_md.transition_transform.duration_300.ease_in_out.content_["''"])
-            .raw('peer')
-            .peer_checked(tw.bg_green_300.before(tw.translate_x_4))
-            .peer_focus(tw.outline_transparent.outline.outline_1.outline_offset_1.outline_green_300)
-        }
+        class={tw.absolute.h_6.w_10.rounded_full.bg_gray_200.shadow_inner
+          .before(
+            tw.absolute.left_1.top_1.size_4.rounded_full.border.border_gray_300
+              .bg_white.shadow_md.transition_transform.duration_300.ease_in_out
+              .content_["''"],
+          )
+          .raw('peer')
+          .peer_checked(tw.bg_green_300.before(tw.translate_x_4))
+          .peer_focus(
+            tw.outline_transparent.outline.outline_1.outline_offset_1
+              .outline_green_300,
+          )}
       />
     </label>
   );
