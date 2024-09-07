@@ -5,7 +5,7 @@ import Selector from "./Selector";
 import { tw } from "typewind";
 
 interface Props {
-  selectedPlatform: Platform | null;
+  selectedPlatform: () => Platform | null;
   onSelectPlatform: (platform: Platform) => void;
 }
 
@@ -13,13 +13,10 @@ function PlatformSelector({ onSelectPlatform, selectedPlatform }: Props) {
   const { data, error } = usePlatforms();
 
   if (error()) return null;
-  console.log(selectedPlatform?.name);
-
 
   return (
     <Selector
-      // menu={selectedPlatform ? selectedPlatform.name : "Select Platform"}
-      menu={`Sort: ${selectedPlatform?.name || "Platforms"}`}
+      menu={() => `Sort: ${selectedPlatform()?.name || "Platforms"}`}
       items={
         <For each={data()}>
           {(platform) => (

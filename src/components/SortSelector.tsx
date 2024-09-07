@@ -4,7 +4,7 @@ import { tw } from "typewind";
 
 interface Props {
   onSelectSortOrder: (sortOrder: string) => void;
-  sortOrder: string;
+  sortOrder: () => string;
 }
 
 const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
@@ -17,13 +17,13 @@ const SortSelector = ({ onSelectSortOrder, sortOrder }: Props) => {
     { value: "-rating", label: "Average rating" },
   ];
 
-  const currentSortOrder = sortOrders.find(
-    (order) => order.value === sortOrder
+  const currentSortOrder = () => sortOrders.find(
+    (order) => order.value === sortOrder()
   );
 
   return (
     <Selector
-      menu={`Order: ${currentSortOrder?.label || "Relevance"}`}
+      menu={() => `Order: ${currentSortOrder()?.label || "Relevance"}`}
       items={
         <For each={sortOrders}>
           {(order) => (

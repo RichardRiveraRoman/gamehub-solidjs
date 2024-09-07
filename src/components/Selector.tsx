@@ -6,7 +6,7 @@ const Selector = ({
   menu,
   items,
 }: {
-  menu: string;
+  menu: () => string;
   items: JSX.Element;
 }) => {
   const [isOpen, setIsOpen] = createSignal(false);
@@ -24,7 +24,7 @@ const Selector = ({
           aria-haspopup="true"
           onClick={() => setIsOpen(!isOpen())}
         >
-          {menu}
+          {menu()}
           <img src={chevronDown} alt="Chevron Down"
             class={tw.raw('platform-icon').size_['0.6rem'].object_contain.translate_y_['0.1rem']}
           />
