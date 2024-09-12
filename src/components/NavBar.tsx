@@ -9,6 +9,7 @@ interface Props extends JSX.HTMLAttributes<HTMLElement> {
 }
 
 function NavBar(props: Props) {
+  // function NavBar(props: JSX.HTMLAttributes<HTMLElement>, {onSearch}: {onSearch: (searchText: string) => void} ) {
   return (
     <nav
       class={`${tw.flex.w_full.items_center.gap_6.px_2.text_black.dark(tw.text_white)} ${props.class}`}

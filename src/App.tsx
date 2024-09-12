@@ -29,7 +29,7 @@ function App() {
       />
       <aside class="app-aside">
         <GenreList
-          selectedGenre={gameQuery().genre}
+          selectedGenre={() => gameQuery().genre}
           onSelectGenre={(genre) => setGameQuery({ ...gameQuery(), genre })}
         />
       </aside>
@@ -48,7 +48,8 @@ function App() {
             }
           />
         </div>
-        <GameGrid gameQuery={gameQuery} />
+        <GameGrid gameQuery={() => gameQuery()} />
+        {/* <GameGrid gameQuery={gameQuery} /> */}
       </main>
     </div>
   );

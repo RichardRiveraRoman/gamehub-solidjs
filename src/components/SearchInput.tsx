@@ -1,11 +1,7 @@
 import search from '../assets/Icons/search.png';
 import { tw } from 'typewind';
 
-const SearchInput = ({
-  onSearch,
-}: {
-  onSearch: (searchText: string) => void;
-}) => {
+function SearchInput({ onSearch }: { onSearch: (searchText: string) => void }) {
   let ref: HTMLInputElement | undefined;
 
   return (
@@ -20,7 +16,7 @@ const SearchInput = ({
         src={search}
         alt="Search Icon"
         class={
-          tw.relative.inset_x_7.size_5
+          tw.relative.inset_x_7.size_['0.8rem']
             .raw('platform-icon')
             .dark(tw.text_gray_300).text_lg
         }
@@ -39,6 +35,6 @@ const SearchInput = ({
       />
     </form>
   );
-};
+}
 
 export default SearchInput;

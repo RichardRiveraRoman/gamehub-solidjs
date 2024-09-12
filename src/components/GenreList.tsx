@@ -4,12 +4,13 @@ import getCroppedImageUrl from '../services/image-url';
 import Spinner from './Spinner';
 import { tw } from 'typewind';
 
-interface Props {
-  selectedGenre: Genre | null;
+function GenreList({
+  selectedGenre,
+  onSelectGenre,
+}: {
+  selectedGenre: () => Genre | null;
   onSelectGenre: (genre: Genre) => void;
-}
-
-function GenreList({ selectedGenre, onSelectGenre }: Props) {
+}) {
   const { data, error, isLoading } = useGenres();
 
   if (error()) return null;
@@ -35,7 +36,7 @@ function GenreList({ selectedGenre, onSelectGenre }: Props) {
               />
               <button
                 type="button"
-                class={`${tw.text_left.hover(tw.font_bold.underline)} ${genre.id === selectedGenre?.id ? 'font-bold' : 'font-normal'} `}
+                class={`${tw.text_left.hover(tw.font_bold.underline)} ${genre.id === selectedGenre()?.id ? 'font-bold' : 'font-normal'} `}
                 onClick={() => onSelectGenre(genre)}
               >
                 {genre.name}
