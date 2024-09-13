@@ -11,7 +11,14 @@ function GameGrid({ gameQuery }: { gameQuery: () => GameQuery }) {
 
   return (
     // Typewind CSS responsive game grid does not work because of `_2xl`
-    // <div class={tw.grid.gap_3.p_3.sm(tw.grid_cols_1).md(tw.grid_cols_2).lg(tw.grid_cols_3).xl(tw.grid_cols_4)._2xl(tw.grid_cols_5)}>
+    // <div
+    //   class={tw.grid.gap_3.p_3
+    //     .sm(tw.grid_cols_1)
+    //     .md(tw.grid_cols_2)
+    //     .lg(tw.grid_cols_3)
+    //     .xl(tw.grid_cols_4)
+    //     ._2xl(tw.grid_cols_5)}
+    // >
     <div class="grid gap-3 p-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
       <Show when={isLoading()}>
         <For each={skeletons}>{() => <GameCardSkeleton />}</For>
