@@ -1,6 +1,6 @@
 function Spinner() {
   return (
-    <div role="status">
+    <output>
       <svg
         aria-hidden="true"
         class="h-8 w-8 animate-spin fill-blue-600 text-gray-200 dark:text-gray-600"
@@ -18,7 +18,7 @@ function Spinner() {
         />
       </svg>
       <span class="sr-only">Loading...</span>
-    </div>
+    </output>
   );
 }
 

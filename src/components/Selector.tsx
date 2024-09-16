@@ -43,12 +43,11 @@ const Selector = ({
       </div>
 
       <Show when={isOpen()}>
-        <div
+        <menu
           class={tw.z_10.absolute.mt_2.w_44.rounded_md.shadow_lg.bg_white
             .dark(tw.bg_zinc_800)
             .ring_1.ring_black.ring_opacity_5.focus(tw.outline_none)}
           // class={tw.z_10.absolute.mt_2.w_full.rounded_md.shadow_lg.bg_white.dark(tw.bg_zinc_800).ring_1.ring_black.ring_opacity_5.focus(tw.outline_none)}
-          role="menu"
           aria-orientation="vertical"
           aria-labelledby="menu-button"
         >
@@ -59,7 +58,7 @@ const Selector = ({
           >
             {items}
           </button>
-        </div>
+        </menu>
       </Show>
     </div>
   );
