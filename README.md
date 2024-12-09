@@ -1,6 +1,6 @@
 # Gamehub
 
-[](./Gamehub-Vite-Solid-TS.png)
+![Gamehub Project Preview](./Gamehub-Vite-Solid-TS.png)
 
 ## Usage
 
