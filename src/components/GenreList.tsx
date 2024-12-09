@@ -36,7 +36,7 @@ function GenreList({
               />
               <button
                 type="button"
-                class={`${tw.text_left.hover(tw.font_bold.underline)} ${genre.id === selectedGenre()?.id ? 'font-bold' : 'font-normal'} `}
+                class={`${tw.text_left.hover(tw.font_bold.underline)}${genre.id === selectedGenre()?.id ? 'font-bold' : 'font-normal'}`}
                 onClick={() => onSelectGenre(genre)}
               >
                 {genre.name}
